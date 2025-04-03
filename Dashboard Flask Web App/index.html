@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            text-align: center;
+            color: #fff;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            color: #fdfdfd;
+            font-size: 2.5em;
+        }
+        .button {
+            background: #ff7eb3;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            background: #ff4f8b;
+            transform: translateY(-2px);
+        }
+        img {
+            width: 100%;
+            max-width: 600px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .links {
+            margin: 20px 0;
+        }
+        .links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+    <script>
+        function subscribe() {
+            var email = prompt("Enter your email to subscribe:", "");
+            if (email) {
+                $.post({
+                    type: "POST",
+                    url: "email",
+                    data: email,
+                    contentType: "application/text; charset=utf-8",
+                    dataType: "json"
+                }).done(function(data) {
+                    alert("Subscription successful! " + data);
+                }).fail(function() {
+                    alert("Subscription failed. Please try again.");
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome!</h1>
+        <p>Enjoy the data.</p>
+        <div class="links">{{DONATE_LINK}}</div>
+        <button class="button" onclick="subscribe()">Subscribe</button>
+        <div class="links">{{BROWSE_LINK}}</div>
+    </div>
+
+    <div class="container">
+        <h1>Dashboard</h1>
+        <a href="dashboard1.html"><img src="dashboard1.svg" alt="Dashboard 1"></a>
+        <a href="dashboard1.html?bins=100"><img src="dashboard1.svg?bins=100" alt="Dashboard 1 Bins"></a>
+        <a href="dashboard2.html"><img src="dashboard2.svg" alt="Dashboard 2"></a>
+        <a href="dashboard3.html"><img src="dashboard3.svg" alt="Dashboard 3"></a>
+        <a href="dashboard4.html"><img src="dashboard4.svg" alt="Dashboard 4"></a>
+        <a href="dashboard5.html"><img src="dashboard5.svg" alt="Dashboard 5"></a>
+    </div>
+</body>
+</html>
